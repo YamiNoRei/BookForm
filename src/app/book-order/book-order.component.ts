@@ -26,13 +26,15 @@ export class BookOrderComponent {
   formData: any = {};
   isQuantityActive: boolean = false;
   orderFormSubmitted: boolean = false;
+  orderList = [];
+
 
   options = {
     autoClose: false,
     keepAfterRouteChange: false
   };
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private _snackBar: MatSnackBar) {
     this.orderForm = this.formBuilder.group({
       gender: new FormControl (null, Validators.required),
       surname: new FormControl ('', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]),
@@ -50,6 +52,10 @@ export class BookOrderComponent {
 
   name = 'Angular ' + VERSION.major; //?
   value = 0;
+
+  openSnackBar(message:string,action:string){
+    let snackBarRef = this._snackBar.open(message, action,{duration:573000});
+  }
 
   onQuantityChange() {
     if (this.orderForm.get('quantity')?.value < 1) {
@@ -123,12 +129,12 @@ export class BookOrderComponent {
   }
    
   onSubmit() {
+    this.openSnackBar('You have succesfully submitted your Order !','x');
     const submitButton = document.getElementById('submit');
     if (this.orderForm.valid && submitButton && document.activeElement === submitButton){
       this.orderFormSubmitted = true;
-      console.log('Form submitted successfully!');
-      console.log(this.orderForm.value); // print form values
     }
   }
-
 }
+
+
