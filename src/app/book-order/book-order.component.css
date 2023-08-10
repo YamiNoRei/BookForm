@@ -33,6 +33,7 @@
   }
   
   .btn {
+    display:flex;
     margin-top: 20px;
     background-color: #432496;
     color: #ffffff;
@@ -112,3 +113,5 @@
   #submit{
     margin-left: 10px;
   }
+
+  
