@@ -194,7 +194,8 @@
             />
         </div>
 
-        <button class="btn btn-primary btn-success m-1" id="submit" [disabled]="!orderForm.valid" (click)="onSubmit()">Submit Order</button>
+        <button class="btn btn-primary" id="submit" (click)="onSubmit()">
+        Submit Order</button>
 
     </form>
 </div>
@@ -208,5 +209,4 @@
     <p>Selected Books: {{ orderForm.controls['subCategory'].value?.name }}</p>
     <p>Quantity: {{ orderForm.controls['quantity'].value }}</p>
     <p>Total Price: {{ getTotalAmount() }}</p>
-
-  </div>
+</div>
